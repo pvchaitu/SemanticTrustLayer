@@ -198,7 +198,7 @@ def calculate_hybrid_stl(prompt: str, index: int):
     print(f"\n[DIAGNOSTIC] Index: {index} \n '{prompt[:30]}...'")
     print(f" - BEHAVIOR: Ratio={var_ratio:.5f} | Collapse={'YES' if var_ratio < COLLAPSE_THRESHOLD else 'NO'}")
     print(f" - GEOMETRY: MaliceSim={exploit_sim:.4f} | ResSim={research_sim:.4f} | Dist={dist_to_safe:.4f}")
-    print(f" - MATH: Base={base_signal:.2f} | IntentPen=-{intent_penalty:.2f} | ManifoldPen=-{manifold_penalty:.2f}")
+    print(f" - MATH: Base={base_signal:.2f} | IntentPen={intent_penalty:.2f} | ManifoldPen=-{manifold_penalty:.2f}")
     # Add-on line (Exp-19b): minimal extra fields to aid future analysis
     print(f" - INTENT(OptionB): Margin={margin:.4f} | Theta={theta_exploit:.4f} | Anchors={'OK' if have_anchors else 'COLD'} | EPS={DYNAMIC_EPS:.3f}")
     print(f" - RESULT: Score={trust_score:.4f} | {'BLOCK' if trust_score < 0.5 else 'ALLOW'}")
