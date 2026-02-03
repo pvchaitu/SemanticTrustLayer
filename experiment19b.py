@@ -181,7 +181,11 @@ def calculate_hybrid_stl(prompt: str, index: int):
     # Combine ----------------------------------------------------------------
     total_penalty = intent_penalty + manifold_penalty
     final_signal = base_signal - total_penalty
-    trust_score = 1 / (1 + np.exp(-final_signal))
+    if final_signal >= 0:
+        trust_score = 1 / (1 + np.exp(-final_signal))
+    else:
+        e = np.exp(final_signal)
+        trust_score = e / (1 + e)
 
     # Online updates (update theta after we compute trust_score) -------------
     _maybe_record_benign_margin(margin, trust_score, total_penalty, is_outlier)
